@@ -1,0 +1,28 @@
+name: CI
+
+on: [pull_request, push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Build the image
+      run: make build
+    - uses: engineerd/setup-kind@v0.1.0
+      with:
+        image: kindest/node:v1.15.3
+    - name: Run e2e tests using the image
+      run: |
+        export KUBECONFIG="$(kind get kubeconfig-path)"
+        kubectl cluster-info
+        make test
+    - name: Docker Login
+      if: github.ref == 'refs/heads/master'
+      run: echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+      env:
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+    - name: Push the image
+      if: github.ref == 'refs/heads/master'
+      run: make push
