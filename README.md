@@ -5,7 +5,7 @@
 
 This is a container image to run Kubernetes end-to-end tests. It includes the `e2e.test` binary, and two command line tools, `kubectl` and `ginkgo`.
 
-You can find available images on Docker Hub, on the [docker.io/zlabjp/kube-conformance](https://cloud.docker.com/u/zlabjp/repository/docker/zlabjp/kube-conformance) repository.
+You can find available images on Docker Hub, on the [docker.io/zlabjp/kube-conformance](https://hub.docker.com/r/zlabjp/kube-conformance/tags) repository.
 
 ## How to use this image
 
