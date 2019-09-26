@@ -13,7 +13,7 @@ Here is an example for running e2e tests for the CSI hostpath driver:
 
 ```bash
 KUBECONFIG="${KUBECONFIG:-$HOME/.kube/config}"
-docker run --init --rm -w "/workspace" -v "$KUBECONFIG:/config" -v "${PWD}:/workspace" docker.io/zlabjp/kube-conformance:1.15.3 \
+docker run --init --rm -w "/workspace" -v "$KUBECONFIG:/config" -v "${PWD}:/workspace" docker.io/zlabjp/kube-conformance:1.16.0 \
   ginkgo -p \
     --focus='External.Storage.*csi-hostpath' \
     --skip='\[Feature:|\[Disruptive\]' \
