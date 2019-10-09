@@ -11,7 +11,7 @@ jobs:
       run: make build
     - uses: engineerd/setup-kind@v0.1.0
       with:
-        image: kindest/node:v1.15.3
+        image: kindest/node:v1.16.1
     - name: Run e2e tests using the image
       run: |
         export KUBECONFIG="$(kind get kubeconfig-path)"
