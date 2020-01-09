@@ -1,4 +1,4 @@
-KUBERNETES_VERSION=1.16.0
+KUBERNETES_VERSION=1.17.0
 DEBIAN_BASE=k8s.gcr.io/debian-base-amd64:0.4.1
 
 KUBE_CONFORMANCE_IMAGE="docker.io/zlabjp/kube-conformance:$(KUBERNETES_VERSION)"

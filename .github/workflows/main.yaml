@@ -9,12 +9,11 @@ jobs:
     - uses: actions/checkout@v1
     - name: Build the image
       run: make build
-    - uses: engineerd/setup-kind@v0.1.0
+    - uses: engineerd/setup-kind@v0.2.0
       with:
-        image: kindest/node:v1.16.1
+        image: kindest/node:v1.17.0
     - name: Run e2e tests using the image
       run: |
-        export KUBECONFIG="$(kind get kubeconfig-path)"
         kubectl cluster-info
         make test
     - name: Docker Login
