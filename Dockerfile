@@ -24,6 +24,11 @@ RUN set -x && \
     chmod +x kubectl
 
 FROM ${DEBIAN_BASE}
+RUN set -x && \
+    apt-get update -qq && \
+    apt-get install -qq -y bash jq && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 COPY --from=kubernetes-test kubernetes/test/bin/e2e.test /usr/local/bin/
 COPY --from=kubernetes-test kubernetes/test/bin/ginkgo /usr/local/bin/
 COPY --from=kubectl kubectl /usr/local/bin/
