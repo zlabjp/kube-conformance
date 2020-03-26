@@ -11,7 +11,7 @@ jobs:
       run: make build
     - uses: engineerd/setup-kind@v0.2.0
       with:
-        image: kindest/node:v1.17.0
+        image: kindest/node:v1.18.0
     - name: Run e2e tests using the image
       run: |
         kubectl cluster-info
